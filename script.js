@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const bootstrapLogoImage = section0.querySelector('img')
     const title = section0.querySelector('h1')
     if(bootstrapLogoImage) {
-        bootstrapLogoImage.setAttribute('src', 'https://cdn-images-1.medium.com/v2/resize:fit:600/1*mKWe6-B_a7gtXGDZ7hWBUA@2x.png');
+        bootstrapLogoImage.setAttribute('src', 'https://www.webyn.ai/user/themes/webyn/images/logo/logo-webyn.webp');
         bootstrapLogoImage.style.width = "350px";
-        bootstrapLogoImage.style.height = "92px";
+        //bootstrapLogoImage.style.height = "92px";
     }
     if(title) {
         title.innerHTML = `
@@ -26,14 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
         leftButton.style.borderRadius = "30px";
         leftButton.style.backgroundColor = "#0ea5e9";
         leftButton.style.borderColor = "#0ea5e9";
-        leftButton.style.paddingTop = "2px";
+        leftButton.style.paddingTop = "0.6rem";
 
     }
     
     if(rightButton) {
         rightButton.innerHTML = `Analyse my website &#8594;`;
         rightButton.style.borderRadius = "30px";
-        rightButton.style.paddingTop = "2px";
+        rightButton.style.paddingTop = "0.6rem";
     }
 
     // Bonus 
@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
     parentSection.insertBefore(sections[1], divider[1].nextSibling);
 
     //  Add an email input field above the existing buttons (”Book a demo” & “Analyse my website”). When the buttons are clicked, display an alert that shows the entered email address.
-
     const emailInput = document.createElement('input');
     emailInput.type = 'email';
     emailInput.placeholder = 'Enter your email';
@@ -58,11 +57,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         section0.querySelectorAll('button').forEach(button => {
             button.addEventListener('click', function() {
-                if(emailInput.value != "") {
-                    alert(emailInput.value);
+                const email = emailInput.value;
+                if(email != "") {
+                    if(validateEmail(email)) {
+                        alert(emailInput.value);
+                    }else {
+                        alert("please enter a valid email format");
+                    }
                 }
             });
         });
+    }
+
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
     }
     
 })
