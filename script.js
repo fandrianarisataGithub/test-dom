@@ -58,7 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         section0.querySelectorAll('button').forEach(button => {
             button.addEventListener('click', function() {
-                alert(emailInput.value);
+                if(emailInput.value != "") {
+                    alert(emailInput.value);
+                }
             });
         });
     }
