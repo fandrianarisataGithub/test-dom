@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if(bootstrapLogoImage) {
         bootstrapLogoImage.setAttribute('src', 'https://www.webyn.ai/user/themes/webyn/images/logo/logo-webyn.webp');
         bootstrapLogoImage.style.width = "350px";
-        //bootstrapLogoImage.style.height = "92px";
     }
     if(title) {
         title.innerHTML = `
@@ -62,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if(validateEmail(email)) {
                         alert(emailInput.value);
                     }else {
-                        alert("please enter a valid email format");
+                        alert(emailInput.value + " is not a valid email format");
                     }
                 }
             });
